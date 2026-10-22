@@ -39,3 +39,7 @@ Open `http://127.0.0.1:7860`. Use `--host`, `--port`, or `--device` as needed.
 
 - [SGLang setup and inference](sglang/README.md)
 - [SFT and online OPD setup and training](minimal_training/README.md)
+
+## License
+
+This codebase and its artifacts are governed by [NVIDIA LICENSE](LICENSE)
