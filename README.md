@@ -1,5 +1,7 @@
 # Nemotron-Labs-Diffusion-Uni: Elastic Self-Refining Unified Diffusion LLM with Cross-Paradigm On-Policy Distillation
 
+![Teaser](pages/nl-diffusion-uni/static/images/demo.gif)
+
 [Huggingface Checkpoint](https://huggingface.co/nvidia/NLD-Uni)
 
 This is the official complementary codebase of NLD-Uni. It contains gradio demo, SGLang inference, and finetuning script of NLD-Uni. This codebase is not required for running the model. Huggingface checkpoint is standalone release and can be directly loaded and used in `transformers` library without cloning this Git repo.
