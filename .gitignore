@@ -1,0 +1,21 @@
+__pycache__/
+.pytest_cache/
+*.pyc
+*.safetensors
+*.bin
+/checkpoints/
+/training-output/
+/validation-output/
+/sglang/sglang-dllm/
+
+# Generated reports and local files
+.env
+.env.*
+*.pem
+*.key
+*.log
+*manifest.json
+/validation*.json
+/*_validation.json
+/minimal_training/validation/
+/examples/*results.json

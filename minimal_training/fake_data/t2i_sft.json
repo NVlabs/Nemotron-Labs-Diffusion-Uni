@@ -1,0 +1,10 @@
+[
+  {
+    "prompt": "A plain white square.",
+    "target": "white.png"
+  },
+  {
+    "prompt": "A plain gray square.",
+    "target": "gray.png"
+  }
+]

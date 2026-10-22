@@ -1,0 +1,3 @@
+datasets:
+  - name: fake-t2i_sft
+    json_path: t2i_sft.json

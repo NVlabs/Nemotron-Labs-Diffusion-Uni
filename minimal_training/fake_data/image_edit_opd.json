@@ -1,0 +1,10 @@
+[
+  {
+    "prompt": "Change the white image to light blue.",
+    "input": "white.png"
+  },
+  {
+    "prompt": "Change the gray image to pale green.",
+    "input": "gray.png"
+  }
+]

@@ -1,0 +1,23 @@
+model: nvidia/NLD-Uni
+output: training-output
+seed: 42
+steps_per_task: 10
+max_attempts_per_task: 100
+learning_rate: 0.000001
+weight_decay: 0.01
+max_grad_norm: 1.0
+block_size: 32
+max_answer_tokens: 256
+max_new_tokens: 2048
+rollout_temperature: 0.0
+opd_ar_weight: 4.0
+resolution: 1024
+rollout_image_steps: 64
+save_model: true
+vlm_teacher: http://teacher-node:8123
+edit_teacher: http://teacher-node:8124
+datasets:
+  vlm_sft: ../fake_data/vlm_sft.yaml
+  t2i_sft: ../fake_data/t2i_sft.yaml
+  vlm_opd: ../fake_data/vlm_opd.yaml
+  image_edit_opd: ../fake_data/image_edit_opd.yaml

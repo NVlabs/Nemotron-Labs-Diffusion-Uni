@@ -1,0 +1,22 @@
+--- a/python/sglang/srt/dllm/mixin/scheduler.py
++++ b/python/sglang/srt/dllm/mixin/scheduler.py
+@@ -154,7 +154,7 @@
+         if not batch.forward_mode.is_dllm_extend():
+             for req in batch.reqs:
+                 req.fill_ids = []
+-            self.report_prefill_stats(
++            self.metrics_reporter.report_prefill_stats(
+                 batch=batch,
+                 prefill_stats=batch.prefill_stats,
+                 can_run_cuda_graph=False,
+
+--- a/python/sglang/srt/dllm/config.py
++++ b/python/sglang/srt/dllm/config.py
+@@ -45,6 +45,7 @@
+             "SDARMoeForCausalLM": {"block_size": 4, "mask_id": 151669},
+             "DiffEncoderModel": {"block_size": 32, "mask_id": 151662},
+             "NemotronLabsDiffusionModel": {"block_size": 32, "mask_id": 100},
++            "NLDUniForCausalLM": {"block_size": 32, "mask_id": 100},
+         }
+ 
+         arch = model_config.hf_config.architectures[0]

@@ -1,0 +1,179 @@
+{
+  "examples": [
+    {
+      "id": "t2i-seashell",
+      "task": "Text-to-image",
+      "source": "Paper, Figure 13 (page 32)",
+      "prompt": "A small seashell on damp sand, delicate ridges and scattered mineral grains, soft morning coastal light. Photorealistic photograph, natural color and exposure, authentic material texture.",
+      "image": "./static/images/demos/t2i-seashell.webp"
+    },
+    {
+      "id": "t2i-meadow",
+      "task": "Text-to-image",
+      "source": "Paper, Figure 13 (page 32)",
+      "prompt": "A meadow of pale wildflowers beneath distant alpine peaks, an uneven footpath, late-spring daylight and natural depth. Photorealistic photograph, natural color and exposure, authentic material texture.",
+      "image": "./static/images/demos/t2i-meadow.webp"
+    },
+    {
+      "id": "t2i-camera",
+      "task": "Text-to-image",
+      "source": "Paper, Figure 13 (page 32)",
+      "prompt": "A vintage film camera with a black leather strap on a wooden desk, realistic worn metal and textured leather, subtle window light. Photorealistic photograph, natural color and exposure, authentic material texture.",
+      "image": "./static/images/demos/t2i-camera.webp"
+    },
+    {
+      "id": "t2i-kingfisher",
+      "task": "Text-to-image",
+      "source": "Paper, Figure 13 (page 32)",
+      "prompt": "A kingfisher perched on a mossy branch above a calm stream, blue and orange plumage, soft diffused daylight. Photorealistic photograph, natural color and exposure, authentic material texture.",
+      "image": "./static/images/demos/t2i-kingfisher.webp"
+    },
+    {
+      "id": "t2i-livingroom",
+      "task": "Text-to-image",
+      "source": "Paper, Figure 13 (page 32)",
+      "prompt": "A modest living room with a cream linen sofa, oak side table, paperback, and leafy plant, garden-facing window, straight architectural lines. Photorealistic photograph, natural color and exposure, authentic material texture.",
+      "image": "./static/images/demos/t2i-livingroom.webp"
+    },
+    {
+      "id": "t2i-snail",
+      "task": "Text-to-image",
+      "source": "Paper, Figure 13 (page 32)",
+      "prompt": "A small snail moving across a wet green leaf, fine shell texture and tiny water droplets, shallow natural depth of field. Photorealistic photograph, natural color and exposure, authentic material texture.",
+      "image": "./static/images/demos/t2i-snail.webp"
+    },
+    {
+      "id": "edit-bus",
+      "task": "Image editing",
+      "source": "Paper, Figure 14 (page 33)",
+      "prompt": "Replace the bus with a truck.",
+      "before": "./static/images/demos/edit-bus-before.webp",
+      "after": "./static/images/demos/edit-bus-after.webp"
+    },
+    {
+      "id": "edit-bear",
+      "task": "Image editing",
+      "source": "Paper, Figure 14 (page 33)",
+      "prompt": "Change the bear’s material to glass.",
+      "before": "./static/images/demos/edit-bear-before.webp",
+      "after": "./static/images/demos/edit-bear-after.webp"
+    },
+    {
+      "id": "edit-dog",
+      "task": "Image editing",
+      "source": "Paper, Figure 14 (page 33)",
+      "prompt": "add a tennis ball next to the dog",
+      "before": "./static/images/demos/edit-dog-before.webp",
+      "after": "./static/images/demos/edit-dog-after.webp"
+    },
+    {
+      "id": "edit-charcoal",
+      "task": "Image editing",
+      "source": "Paper, Figure 14 (page 33)",
+      "prompt": "Transfer the image into a dramatic charcoal-drawing style.",
+      "before": "./static/images/demos/edit-charcoal-before.webp",
+      "after": "./static/images/demos/edit-charcoal-after.webp"
+    },
+    {
+      "id": "understanding-textvqa_val",
+      "task": "Visual understanding",
+      "source": "TextVQA",
+      "question": "What is the brand of this camera?",
+      "raw_response": "Dakota.",
+      "display_answer": "Dakota.",
+      "image": "./static/images/demos/understanding-textvqa_val.webp"
+    },
+    {
+      "id": "understanding-realworldqa",
+      "task": "Visual understanding",
+      "source": "RealWorldQA · sample 8",
+      "question": "What direction is the dog facing?",
+      "raw_response": "C",
+      "display_answer": "C — The dog is facing the left.",
+      "image": "./static/images/demos/understanding-realworldqa.webp"
+    },
+    {
+      "id": "math-593",
+      "task": "Math reasoning",
+      "source": "MathVista testmini · problem 593",
+      "question": "What is the average of longest light blue bar and shortest gray bar?",
+      "answer": "273",
+      "raw_response": "<think>The user wants me to find the average of the longest light blue bar and the shortest gray bar.\n\n1.  **Identify the longest light blue bar:**\n    *   Looking at the chart, there are two groups of \"Solved homicides\" and \"Unsolved homicides\".\n    *   The legend indicates that the light blue color corresponds to the year 2012.\n    *   In the \"Solved homicides\" group, the light blue bar has a value of 415.\n    *   In the \"Unsolved homicides\" group, the light blue bar has a value of 128.\n    *   Comparing 415 and 128, the longest light blue bar is the one with the value 415.\n\n2.  **Identify the shortest gray bar:**\n    *   The legend indicates that the gray color corresponds to the year 2014.\n    *   In the \"Solved homicides\" group, the gray bar has a value of 385.\n    *   In the \"Unsolved homicides\" group, the gray bar has a value of 131.\n    *   Comparing 385 and 131, the shortest gray bar is the one with the value 131.\n\n3.  **Calculate the average:**\n    *   The values are 415 and 131.\n    *   Average = (415 + 131) / 2\n    *   Sum = 546\n    *   Average = 546 / 2 = 273.\n\n4.  **Final formatting:**\n    *   The question asks for an integer answer.\n    *   Format: Answer: 273.\n</think>\nAnswer: 273",
+      "reasoning_excerpt": "Comparing 415 and 128, the longest light blue bar is the one with the value 415.\nComparing 385 and 131, the shortest gray bar is the one with the value 131.\nAverage = (415 + 131) / 2\nAverage = 546 / 2 = 273.",
+      "image": "./static/images/demos/math-593.webp"
+    },
+    {
+      "id": "math-601",
+      "task": "Math reasoning",
+      "source": "MathVista testmini · problem 601",
+      "question": "What's the ratio of smallest segment and second largest segment?",
+      "answer": "0.33",
+      "raw_response": "<think>The user wants me to find the ratio of the smallest segment to the second largest segment based the provided pie chart.\n\n1.  **Identify the segments and their values:**\n    *   \"Strong ties with U.S.\": 57%\n (This is the largest segment)\n    *   \"Equally close ties (VOL)\": 21%\n (This is the second largest segment)\n    *   \"Strong ties with Russia\": 15%\n    *   \"Don't know\": 7%\n\n (This is the smallest segment)\n\n2.  **Determine the smallest segment:**\n    *   Looking at the percentages: 57, 21, 15, 7.\n    *   The smallest value is 7% (\"Don't know\").\n\n3.  **Determine the second largest segment:**\n    *   Looking at the percentages: 57, 21, 15, 7.\n    *   The largest is 57.\n    *   The second largest is 21 (\" (\"Equally close ties (VOL)\").\n\n4.  **Calculate the ratio:**\n    *   Ratio = Smallest Segment / Second Largest Segment\n    *   Ratio = 7 / 21\n\n5.  **Perform the division:**\n    *   7 / 21 = 1/3\n    *   1 / 3 ≈ 0.33333...\n\n6.  **Format the answer:**\n    *   The question asks for a floating-point number with two decimal places.\n    *   0.3333... rounded to two decimal places is 0.33.\n\n7.  **Final check:**\n    *   Smallest segment: 7% (\"Don't know\")\n    *   Second largest segment: 21% (\"Equally close ties (VOL)\")\n    *   Ratio: 7/21 = 0.3333...\n    *   Rounding to two decimal places: 0.33.\n</think>\nAnswer: 0.33",
+      "reasoning_excerpt": "Ratio = Smallest Segment / Second Largest Segment\nRatio = 7 / 21\n7 / 21 = 1/3\n0.3333... rounded to two decimal places is 0.33.",
+      "image": "./static/images/demos/math-601.webp"
+    },
+    {
+      "id": "grounding-tennis",
+      "task": "Object grounding",
+      "source": "RefCOCOg",
+      "tags": [
+        "a man in blue and white playing tennis"
+      ],
+      "loc_xyxy": [
+        [
+          348,
+          420,
+          572,
+          804
+        ]
+      ],
+      "pixel_xyxy": [
+        [
+          217.5,
+          156.0,
+          357.5,
+          396.0
+        ]
+      ],
+      "image": "./static/images/demos/grounding-tennis.webp"
+    },
+    {
+      "id": "grounding-dog",
+      "task": "Object grounding",
+      "source": "Grounding demo · generated input",
+      "tags": [
+        "dog",
+        "red collar"
+      ],
+      "loc_xyxy": [
+        [
+          232,
+          136,
+          656,
+          952
+        ],
+        [
+          428,
+          380,
+          608,
+          512
+        ]
+      ],
+      "pixel_xyxy": [
+        [
+          57.5,
+          127.5,
+          455.0,
+          892.5
+        ],
+        [
+          241.25,
+          356.25,
+          410.0,
+          480.0
+        ]
+      ],
+      "image": "./static/images/demos/grounding-dog.webp"
+    }
+  ]
+}

@@ -1,0 +1,2 @@
+from sglang_nlduni.algorithm import install_nlduni_fastdiffuser
+install_nlduni_fastdiffuser()

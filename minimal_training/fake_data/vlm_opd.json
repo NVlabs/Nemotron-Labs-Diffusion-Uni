@@ -1,0 +1,10 @@
+[
+  {
+    "prompt": "What color fills this image?",
+    "image": "white.png"
+  },
+  {
+    "prompt": "Describe what you see.",
+    "image": "gray.png"
+  }
+]

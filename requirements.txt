@@ -1,0 +1,13 @@
+# Python 3.13, CUDA 12.6; install torch before building flash-attn.
+torch==2.7.0
+torchvision==0.22.0
+transformers==4.57.6
+huggingface-hub==0.36.2
+tokenizers==0.22.2
+accelerate==1.6.0
+safetensors==0.7.0
+timm==1.0.26
+einops==0.6.1
+numpy==2.4.3
+pillow==12.1.1
+tqdm>=4.66,<5

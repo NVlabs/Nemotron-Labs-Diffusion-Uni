@@ -1,0 +1,12 @@
+name: nlduni-inference
+channels:
+  - conda-forge
+dependencies:
+  - python=3.13
+  - pip
+  - ninja
+  - packaging
+  - pip:
+      - -r requirements.txt
+# CUDA toolkit 12.6 and a compatible NVIDIA driver are required.
+# Then: pip install --no-build-isolation flash-attn==2.8.0.post2

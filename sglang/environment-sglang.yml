@@ -1,0 +1,10 @@
+name: nlduni-sglang
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+  - pip
+  - ninja
+  - packaging
+  - pip:
+      - -r requirements-sglang.txt

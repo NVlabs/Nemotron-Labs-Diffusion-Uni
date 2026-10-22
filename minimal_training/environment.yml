@@ -1,0 +1,12 @@
+name: nlduni-minimal-training
+channels:
+  - conda-forge
+dependencies:
+  - python=3.13
+  - pip
+  - ninja
+  - packaging
+  - pip:
+      - -r requirements.txt
+# Install a CUDA 12.6 PyTorch build, then:
+# pip install --no-build-isolation flash-attn==2.8.0.post2

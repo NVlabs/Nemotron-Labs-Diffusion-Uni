@@ -1,0 +1,17 @@
+# Python 3.13 / CUDA 12.6; install flash-attn after PyTorch.
+torch==2.7.0
+torchvision==0.22.0
+transformers==4.57.6
+huggingface-hub==0.36.2
+tokenizers==0.22.2
+accelerate==1.6.0
+safetensors==0.7.0
+timm==1.0.26
+einops==0.6.1
+numpy==2.4.3
+pillow==12.1.1
+tqdm>=4.66,<5
+PyYAML==6.0.3
+pyarrow==23.0.1
+pylance==4.0.0
+pytest==9.0.3

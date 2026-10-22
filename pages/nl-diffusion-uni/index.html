@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="NLDUni: unified diffusion for image generation, editing, visual understanding, math reasoning, and object grounding">
+  <meta name="keywords" content="unified diffusion, text-to-image, image editing, visual reasoning, object grounding">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NLDUni · Unified Diffusion for Vision and Generation</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script defer src="./static/js/index.js"></script>
+</head>
+
+<body>
+
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" tabindex="0" aria-controls="site-menu">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    <div class="navbar-menu" id="site-menu">
+      <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+        <a class="navbar-item" href="https://homepage.jackli.org">
+          <span class="icon">
+            <i class="fas fa-home"></i>
+          </span>
+          <span>Home</span>
+        </a>
+        <a class="navbar-item" href="#examples">Examples</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h2 class="title is-2 publication-title">Nemotron-Labs-Diffusion-Uni: Elastic Self-Refining
+Unified Diffusion LLM with Cross-Paradigm
+On-Policy Distillation
+</h2>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <a href="http://homepage.jackli.org/">Shufan Li</a><sup>*</sup>,</span>
+              <span class="author-block">
+                Hanrong Ye<sup>*</sup>,</span>
+              <span class="author-block">
+                Greg Heinrich<sup>*</sup>,</span>
+              <span class="author-block">
+                Yonggan Fu,</span>
+                            <span class="author-block">
+                Haotian Zhang,</span>
+              <span class="author-block">
+                Sifei Liu,</span>
+              <span class="author-block">
+                <a href="https://aditya-grover.github.io">Aditya Grover</a>,</span>
+              <span class="author-block">
+                Pavlo Molchanov</span>
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><sup>*</sup>Core Contribution</span>
+              <!-- <span class="author-block"><sup>2</sup>NVIDIA</span> -->
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- Paper Link -->
+                <span class="link-block">
+                  <a href="https://arxiv.org/abs/2606.29814"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                    </span>
+                    <span>Paper</span>
+                  </a>
+                </span>
+                <!-- ArXiv Link -->
+                <span class="link-block">
+                  <a href="https://arxiv.org/abs/2606.29814"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                    </span>
+                    <span>arXiv</span>
+                  </a>
+                </span>
+                <!-- Model Link (coming soon) -->
+                <!-- <span class="link-block">
+                  <a href="https://huggingface.co/nvidia/NL-Diffusion-Image"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fas fa-robot"></i>
+                    </span>
+                    <span>Model</span>
+                  </a>
+                </span> -->
+                <!-- HF Space Demo (coming soon) -->
+                <!-- <span class="link-block">
+                  <a href="https://huggingface.co/spaces/nvidia/NL-Diffusion-Image"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fas fa-play-circle"></i>
+                    </span>
+                    <span>Demo</span>
+                  </a>
+                </span> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+<img src="./static/images/explainer.png" alt="GCE objective illustration">
+      <h2 class="subtitle has-text-centered">
+        <span class="dnerf">Nemotron-Labs-Diffusion-Uni</span> is an unified diffusion LLM that achieves state-of-the-art performance on diverse visual understanding and generation tasks. It adopts an Elastic-MoT architecture with  three elastic views.
+      </h2>
+    </div>
+  </section>
+
+
+
+  <section class="section demo-section" id="examples" aria-labelledby="examples-heading">
+    <div class="container is-max-desktop"><div class="demo-intro"><p class="demo-eyebrow">One model · five capabilities</p><h2 class="title is-3" id="examples-heading">See NLDUni in action</h2><p>Generate, edit, understand, reason, and localize.</p></div>
+      <nav class="demo-tabs" aria-label="Explore model capabilities"><a id="tab-t2i" href="#demo-t2i" data-demo-tab="t2i">Text-to-image</a><a id="tab-editing" href="#demo-editing" data-demo-tab="editing">Image editing</a><a id="tab-understanding" href="#demo-understanding" data-demo-tab="understanding">Visual understanding</a><a id="tab-math" href="#demo-math" data-demo-tab="math">Math reasoning</a><a id="tab-grounding" href="#demo-grounding" data-demo-tab="grounding">Object grounding</a></nav>
+      <section id="demo-t2i" class="demo-panel" aria-labelledby="heading-t2i"><div class="demo-panel-heading"><h3 id="heading-t2i">From landscapes to tiny details</h3><p>Six 1024 × 1024 generations from the paper’s standalone gallery. Open a prompt to see the exact conditioning text.</p></div><div class="demo-grid t2i-grid"><article class="demo-card">
+      <a href="./static/images/demos/t2i-seashell.webp?v=2088c859f22f" class="demo-image-link" target="_blank" rel="noopener" aria-label="Open full-size image: Coastal textures"><img src="./static/images/demos/t2i-seashell.webp?v=2088c859f22f" alt="Coastal textures" width="1024" height="1024" loading="lazy" decoding="async" class=""></a>
+      <div class="demo-copy"><h4>Coastal textures</h4><details class="demo-prompt"><summary>Read prompt</summary><p>A small seashell on damp sand, delicate ridges and scattered mineral grains, soft morning coastal light. Photorealistic photograph, natural color and exposure, authentic material texture.</p></details></div>
+    </article><article class="demo-card">
+      <a href="./static/images/demos/t2i-meadow.webp?v=7a3f6d8b2f92" class="demo-image-link" target="_blank" rel="noopener" aria-label="Open full-size image: Alpine wildflowers"><img src="./static/images/demos/t2i-meadow.webp?v=7a3f6d8b2f92" alt="Alpine wildflowers" width="1024" height="1024" loading="lazy" decoding="async" class=""></a>
+      <div class="demo-copy"><h4>Alpine wildflowers</h4><details class="demo-prompt"><summary>Read prompt</summary><p>A meadow of pale wildflowers beneath distant alpine peaks, an uneven footpath, late-spring daylight and natural depth. Photorealistic photograph, natural color and exposure, authentic material texture.</p></details></div>
+    </article><article class="demo-card">
+      <a href="./static/images/demos/t2i-camera.webp?v=4ab0bf399c33" class="demo-image-link" target="_blank" rel="noopener" aria-label="Open full-size image: Material and texture"><img src="./static/images/demos/t2i-camera.webp?v=4ab0bf399c33" alt="Material and texture" width="1024" height="1024" loading="lazy" decoding="async" class=""></a>
+      <div class="demo-copy"><h4>Material and texture</h4><details class="demo-prompt"><summary>Read prompt</summary><p>A vintage film camera with a black leather strap on a wooden desk, realistic worn metal and textured leather, subtle window light. Photorealistic photograph, natural color and exposure, authentic material texture.</p></details></div>
+    </article><article class="demo-card">
+      <a href="./static/images/demos/t2i-kingfisher.webp?v=b8b5e05a5a4c" class="demo-image-link" target="_blank" rel="noopener" aria-label="Open full-size image: Wildlife in natural light"><img src="./static/images/demos/t2i-kingfisher.webp?v=b8b5e05a5a4c" alt="Wildlife in natural light" width="1024" height="1024" loading="lazy" decoding="async" class=""></a>
+      <div class="demo-copy"><h4>Wildlife in natural light</h4><details class="demo-prompt"><summary>Read prompt</summary><p>A kingfisher perched on a mossy branch above a calm stream, blue and orange plumage, soft diffused daylight. Photorealistic photograph, natural color and exposure, authentic material texture.</p></details></div>
+    </article><article class="demo-card">
+      <a href="./static/images/demos/t2i-livingroom.webp?v=860d715da35f" class="demo-image-link" target="_blank" rel="noopener" aria-label="Open full-size image: A quiet interior"><img src="./static/images/demos/t2i-livingroom.webp?v=860d715da35f" alt="A quiet interior" width="1024" height="1024" loading="lazy" decoding="async" class=""></a>
+      <div class="demo-copy"><h4>A quiet interior</h4><details class="demo-prompt"><summary>Read prompt</summary><p>A modest living room with a cream linen sofa, oak side table, paperback, and leafy plant, garden-facing window, straight architectural lines. Photorealistic photograph, natural color and exposure, authentic material texture.</p></details></div>
+    </article><article class="demo-card">
+      <a href="./static/images/demos/t2i-snail.webp?v=695e81db2baf" class="demo-image-link" target="_blank" rel="noopener" aria-label="Open full-size image: A closer look"><img src="./static/images/demos/t2i-snail.webp?v=695e81db2baf" alt="A closer look" width="1024" height="1024" loading="lazy" decoding="async" class=""></a>
+      <div class="demo-copy"><h4>A closer look</h4><details class="demo-prompt"><summary>Read prompt</summary><p>A small snail moving across a wet green leaf, fine shell texture and tiny water droplets, shallow natural depth of field. Photorealistic photograph, natural color and exposure, authentic material texture.</p></details></div>
+    </article></div></section><section id="demo-editing" class="demo-panel" aria-labelledby="heading-editing"><div class="demo-panel-heading"><h3 id="heading-editing">An instruction. A visible change.</h3><p>Drag each slider to compare the input and edited output. Examples are from the paper’s standalone image-editing gallery.</p></div><div class="demo-grid edit-grid"><article class="demo-card edit-card">
+      <div class="compare" style="--split:50%;aspect-ratio:608/416">
+        <img src="./static/images/demos/edit-bus-after.webp" alt="Output: Replace the bus with a truck." width="608" height="416" loading="lazy" decoding="async" class="compare-after">
+        <img src="./static/images/demos/edit-bus-before.webp" alt="Input image before editing" width="608" height="416" loading="lazy" decoding="async" class="compare-before">
+        <span class="compare-label input-label">Input</span><span class="compare-label output-label">Output</span>
+        <span class="compare-divider" aria-hidden="true"><span>↔</span></span>
+      </div>
+      <div class="demo-copy"><h4>Object replacement</h4><p class="edit-instruction">“Replace the bus with a truck.”</p>
+        <label class="compare-control" for="compare-bus">Compare input and output
+          <input id="compare-bus" type="range" min="0" max="100" value="50" aria-label="Input image visibility: Object replacement" aria-valuetext="50% input visible">
+        </label>
+        <div class="original-links"><a href="./static/images/demos/edit-bus-before.webp" target="_blank" rel="noopener">View input</a><a href="./static/images/demos/edit-bus-after.webp" target="_blank" rel="noopener">View output</a></div>
+      </div>
+    </article><article class="demo-card edit-card">
+      <div class="compare" style="--split:50%;aspect-ratio:608/416">
+        <img src="./static/images/demos/edit-bear-after.webp" alt="Output: Change the bear’s material to glass." width="608" height="416" loading="lazy" decoding="async" class="compare-after">
+        <img src="./static/images/demos/edit-bear-before.webp" alt="Input image before editing" width="608" height="416" loading="lazy" decoding="async" class="compare-before">
+        <span class="compare-label input-label">Input</span><span class="compare-label output-label">Output</span>
+        <span class="compare-divider" aria-hidden="true"><span>↔</span></span>
+      </div>
+      <div class="demo-copy"><h4>Material transformation</h4><p class="edit-instruction">“Change the bear’s material to glass.”</p>
+        <label class="compare-control" for="compare-bear">Compare input and output
+          <input id="compare-bear" type="range" min="0" max="100" value="50" aria-label="Input image visibility: Material transformation" aria-valuetext="50% input visible">
+        </label>
+        <div class="original-links"><a href="./static/images/demos/edit-bear-before.webp" target="_blank" rel="noopener">View input</a><a href="./static/images/demos/edit-bear-after.webp" target="_blank" rel="noopener">View output</a></div>
+      </div>
+    </article><article class="demo-card edit-card">
+      <div class="compare" style="--split:50%;aspect-ratio:480/576">
+        <img src="./static/images/demos/edit-dog-after.webp" alt="Output: add a tennis ball next to the dog" width="480" height="576" loading="lazy" decoding="async" class="compare-after">
+        <img src="./static/images/demos/edit-dog-before.webp" alt="Input image before editing" width="480" height="576" loading="lazy" decoding="async" class="compare-before">
+        <span class="compare-label input-label">Input</span><span class="compare-label output-label">Output</span>
+        <span class="compare-divider" aria-hidden="true"><span>↔</span></span>
+      </div>
+      <div class="demo-copy"><h4>Object addition</h4><p class="edit-instruction">“add a tennis ball next to the dog”</p>
+        <label class="compare-control" for="compare-dog">Compare input and output
+          <input id="compare-dog" type="range" min="0" max="100" value="50" aria-label="Input image visibility: Object addition" aria-valuetext="50% input visible">
+        </label>
+        <div class="original-links"><a href="./static/images/demos/edit-dog-before.webp" target="_blank" rel="noopener">View input</a><a href="./static/images/demos/edit-dog-after.webp" target="_blank" rel="noopener">View output</a></div>
+      </div>
+    </article><article class="demo-card edit-card">
+      <div class="compare" style="--split:50%;aspect-ratio:1024/1024">
+        <img src="./static/images/demos/edit-charcoal-after.webp" alt="Output: Transfer the image into a dramatic charcoal-drawing style." width="1024" height="1024" loading="lazy" decoding="async" class="compare-after">
+        <img src="./static/images/demos/edit-charcoal-before.webp" alt="Input image before editing" width="1024" height="1024" loading="lazy" decoding="async" class="compare-before">
+        <span class="compare-label input-label">Input</span><span class="compare-label output-label">Output</span>
+        <span class="compare-divider" aria-hidden="true"><span>↔</span></span>
+      </div>
+      <div class="demo-copy"><h4>Style transfer</h4><p class="edit-instruction">“Transfer the image into a dramatic charcoal-drawing style.”</p>
+        <label class="compare-control" for="compare-charcoal">Compare input and output
+          <input id="compare-charcoal" type="range" min="0" max="100" value="50" aria-label="Input image visibility: Style transfer" aria-valuetext="50% input visible">
+        </label>
+        <div class="original-links"><a href="./static/images/demos/edit-charcoal-before.webp" target="_blank" rel="noopener">View input</a><a href="./static/images/demos/edit-charcoal-after.webp" target="_blank" rel="noopener">View output</a></div>
+      </div>
+    </article></div></section><section id="demo-understanding" class="demo-panel" aria-labelledby="heading-understanding"><div class="demo-panel-heading"><h3 id="heading-understanding">Read the image. Answer the question.</h3><p>Model responses paired with their input images.</p></div><div class="demo-grid qa-grid"><article class="demo-card qa-card"><a href="./static/images/demos/understanding-textvqa_val.webp" class="demo-image-link" target="_blank" rel="noopener" aria-label="Open full-size image: Reading text in a photograph"><img src="./static/images/demos/understanding-textvqa_val.webp" alt="Reading text in a photograph" width="1024" height="664" loading="lazy" decoding="async" class="qa-image"></a>
+      <div class="demo-copy"><p class="demo-source">TextVQA</p><h4>Reading text in a photograph</h4>
+        <p class="demo-question">What is the brand of this camera?</p>
+        <div class="model-answer"><span>Model answer</span><p>Dakota.</p></div>
+      </div></article><article class="demo-card qa-card"><a href="./static/images/demos/understanding-realworldqa.webp" class="demo-image-link" target="_blank" rel="noopener" aria-label="Open full-size image: Understanding spatial direction"><img src="./static/images/demos/understanding-realworldqa.webp" alt="Understanding spatial direction" width="1152" height="1536" loading="lazy" decoding="async" class="qa-image"></a>
+      <div class="demo-copy"><p class="demo-source">RealWorldQA</p><h4>Understanding spatial direction</h4>
+        <p class="demo-question">What direction is the dog facing?</p><p class="question-options">A. Forward &nbsp; B. Right &nbsp; C. Left</p>
+        <div class="model-answer"><span>Model answer</span><p>C — The dog is facing the left.</p></div>
+      </div></article></div></section><section id="demo-math" class="demo-panel" aria-labelledby="heading-math"><div class="demo-panel-heading"><h3 id="heading-math">Reason from what is visible</h3><p>MathVista examples. The excerpts below retain the model’s wording; expand each card to read the complete saved response.</p></div><div class="demo-grid math-grid"><article class="demo-card math-card">
+      <div class="math-figure"><a href="./static/images/demos/math-593.webp" class="demo-image-link" target="_blank" rel="noopener" aria-label="Open full-size image: Compare values and compute an average"><img src="./static/images/demos/math-593.webp" alt="Compare values and compute an average" width="800" height="557" loading="lazy" decoding="async" class=""></a></div>
+      <div class="demo-copy"><p class="demo-source">MathVista · problem 593</p><h4>Compare values and compute an average</h4><p class="demo-question">What is the average of longest light blue bar and shortest gray bar?</p>
+        <div class="reasoning-excerpt"><span>Model reasoning · excerpt</span><p>Comparing 415 and 128, the longest light blue bar is the one with the value 415.<br>Comparing 385 and 131, the shortest gray bar is the one with the value 131.<br>Average = (415 + 131) / 2<br>Average = 546 / 2 = 273.</p></div>
+        <div class="model-answer"><span>Answer</span><p>273</p></div>
+        <details class="saved-response"><summary>Full saved model response</summary><pre>&lt;think&gt;The user wants me to find the average of the longest light blue bar and the shortest gray bar.
+
+1.  **Identify the longest light blue bar:**
+    *   Looking at the chart, there are two groups of &quot;Solved homicides&quot; and &quot;Unsolved homicides&quot;.
+    *   The legend indicates that the light blue color corresponds to the year 2012.
+    *   In the &quot;Solved homicides&quot; group, the light blue bar has a value of 415.
+    *   In the &quot;Unsolved homicides&quot; group, the light blue bar has a value of 128.
+    *   Comparing 415 and 128, the longest light blue bar is the one with the value 415.
+
+2.  **Identify the shortest gray bar:**
+    *   The legend indicates that the gray color corresponds to the year 2014.
+    *   In the &quot;Solved homicides&quot; group, the gray bar has a value of 385.
+    *   In the &quot;Unsolved homicides&quot; group, the gray bar has a value of 131.
+    *   Comparing 385 and 131, the shortest gray bar is the one with the value 131.
+
+3.  **Calculate the average:**
+    *   The values are 415 and 131.
+    *   Average = (415 + 131) / 2
+    *   Sum = 546
+    *   Average = 546 / 2 = 273.
+
+4.  **Final formatting:**
+    *   The question asks for an integer answer.
+    *   Format: Answer: 273.
+&lt;/think&gt;
+Answer: 273</pre></details>
+      </div></article><article class="demo-card math-card">
+      <div class="math-figure"><a href="./static/images/demos/math-601.webp" class="demo-image-link" target="_blank" rel="noopener" aria-label="Open full-size image: Compute a ratio from a pie chart"><img src="./static/images/demos/math-601.webp" alt="Compute a ratio from a pie chart" width="210" height="386" loading="lazy" decoding="async" class=""></a></div>
+      <div class="demo-copy"><p class="demo-source">MathVista · problem 601</p><h4>Compute a ratio from a pie chart</h4><p class="demo-question">What&#x27;s the ratio of smallest segment and second largest segment?</p>
+        <div class="reasoning-excerpt"><span>Model reasoning · excerpt</span><p>Ratio = Smallest Segment / Second Largest Segment<br>Ratio = 7 / 21<br>7 / 21 = 1/3<br>0.3333... rounded to two decimal places is 0.33.</p></div>
+        <div class="model-answer"><span>Answer</span><p>0.33</p></div>
+        <details class="saved-response"><summary>Full saved model response</summary><pre>&lt;think&gt;The user wants me to find the ratio of the smallest segment to the second largest segment based the provided pie chart.
+
+1.  **Identify the segments and their values:**
+    *   &quot;Strong ties with U.S.&quot;: 57%
+ (This is the largest segment)
+    *   &quot;Equally close ties (VOL)&quot;: 21%
+ (This is the second largest segment)
+    *   &quot;Strong ties with Russia&quot;: 15%
+    *   &quot;Don&#x27;t know&quot;: 7%
+
+ (This is the smallest segment)
+
+2.  **Determine the smallest segment:**
+    *   Looking at the percentages: 57, 21, 15, 7.
+    *   The smallest value is 7% (&quot;Don&#x27;t know&quot;).
+
+3.  **Determine the second largest segment:**
+    *   Looking at the percentages: 57, 21, 15, 7.
+    *   The largest is 57.
+    *   The second largest is 21 (&quot; (&quot;Equally close ties (VOL)&quot;).
+
+4.  **Calculate the ratio:**
+    *   Ratio = Smallest Segment / Second Largest Segment
+    *   Ratio = 7 / 21
+
+5.  **Perform the division:**
+    *   7 / 21 = 1/3
+    *   1 / 3 ≈ 0.33333...
+
+6.  **Format the answer:**
+    *   The question asks for a floating-point number with two decimal places.
+    *   0.3333... rounded to two decimal places is 0.33.
+
+7.  **Final check:**
+    *   Smallest segment: 7% (&quot;Don&#x27;t know&quot;)
+    *   Second largest segment: 21% (&quot;Equally close ties (VOL)&quot;)
+    *   Ratio: 7/21 = 0.3333...
+    *   Rounding to two decimal places: 0.33.
+&lt;/think&gt;
+Answer: 0.33</pre></details>
+      </div></article></div></section><section id="demo-grounding" class="demo-panel" aria-labelledby="heading-grounding"><div class="demo-panel-heading"><h3 id="heading-grounding">Put language in the picture</h3><p>Locate a referring expression or several tags at once. Toggle the boxes to inspect the original image.</p></div><div class="demo-grid grounding-grid"><article class="demo-card grounding-card">
+      <div class="grounding-image" style="aspect-ratio:640/427"><img src="./static/images/demos/grounding-tennis.webp" alt="A referring expression" width="640" height="427" loading="lazy" decoding="async" class="">
+        <svg viewBox="0 0 640 427" role="img" aria-label="Predicted bounding boxes for a man in blue and white playing tennis"><rect x="217.5" y="156.0" width="140.0" height="240.0" stroke="#d3173c"/></svg>
+      </div>
+      <div class="demo-copy"><p class="demo-source">RefCOCOg</p><h4>A referring expression</h4><div class="tag-list"><span class="tag-chip" style="--tag-color:#d3173c"><span aria-hidden="true">●</span> a man in blue and white playing tennis</span></div>
+        <label class="grounding-toggle"><input type="checkbox" checked> Show predicted boxes</label>
+      </div></article><article class="demo-card grounding-card">
+      <div class="grounding-image" style="aspect-ratio:640/960"><img src="./static/images/demos/grounding-dog.webp" alt="Multiple tags in one pass" width="640" height="960" loading="lazy" decoding="async" class="">
+        <svg viewBox="0 0 640 960" role="img" aria-label="Predicted bounding boxes for dog, red collar"><rect x="57.5" y="127.5" width="397.5" height="765.0" stroke="#d3173c"/><rect x="241.25" y="356.25" width="168.75" height="123.75" stroke="#008044"/></svg>
+      </div>
+      <div class="demo-copy"><p class="demo-source">Grounding demo · generated input</p><h4>Multiple tags in one pass</h4><div class="tag-list"><span class="tag-chip" style="--tag-color:#d3173c"><span aria-hidden="true">●</span> dog</span><span class="tag-chip" style="--tag-color:#008044"><span aria-hidden="true">●</span> red collar</span></div>
+        <label class="grounding-toggle"><input type="checkbox" checked> Show predicted boxes</label>
+      </div></article></div></section>
+      <p class="demo-footnote">Selected examples, not an aggregate benchmark. <a href="./static/data/demo-examples.json">Example sources and saved responses</a>.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <!-- Abstract -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              We propose <strong>Nemotron-Labs-Diffusion-Uni (NLDUni)</strong>, a unified discrete diffusion large language model (DLLM)
+for visual understanding and generation tasks. Compared with prior unified diffusion models, NLDUni in-
+troduces two major innovations. First, we propose a unified cross-paradigm on-policy distillation (OPD)
+framework that successfully transfers the visual understanding ability of autoregressive VLMs and visual
+generation ability of continuous flow models, to a unified DLLM. Second, NLDUni incorporates a novel
+progressive self-refining diffusion process that gradually corrupts each token across multiple steps during
+training, as opposed to adopting the conventional masked diffusion formulation that directly corrupts a
+clean image token to an uninformative mask token. At inference, this design allows NLDUni to make
+intermediate commit to a token, enabling progressive self-refinement for better visual quality. Through
+extensive experiments, we show that NLDUni achieves state-of-the-art performance among unified DLLMs
+on diverse tasks including visual question-answering, multi-modal reasoning, object grounding, text-to-image
+generation, and image editing.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+          <h2 class="title is-3">Model Architecture</h2>
+          <img src="./static/images/arch.png" alt="Model architecture diagram">
+          <div class="content has-text-justified" style="margin-top: 1rem;">
+            <p>
+             NLDUni is a unified diffusion model whose input and
+output are both multimodal. Images in the input stream are represented by both continuous embeddings of a
+semantic encoder and discrete tokens of a VQ encoder. Images in the output stream are represented solely
+using VQ codes. NLDUni is trained to predict the clean token distribution given partially masked inputs.
+For image generation, we incorporate an intermediate masking state.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+          <h2 class="title is-3">Self-Refining Diffusion Process</h2>
+          <img src="./static/images/diffusion.png" alt="Self-Refining Diffusion Process illustration">
+          <div class="content has-text-justified" style="margin-top: 1rem;">
+            <p>
+              A key contribution of this work is the self-refining diffusion process, which gradually corrupts each token across multiple steps during training. This is in contrast to the conventional masked diffusion formulation that directly corrupts a clean image token to an uninformative mask token. At inference, this design allows NLDUni to make intermediate commit to a token, enabling progressive self-refinement for better visual quality.
+            </p>
+          </div>
+          <img src="./static/images/corruption.png" alt="Few-step generation examples">
+
+            <div class="content has-text-justified" style="margin-top: 1rem;">
+            <p>
+              Practically, the partial corrpution is implemented by a ball-tree based noise schedule, which progressively replaces the clean token with a corrupted token sampled from its neighbors in the embedding space. Visually, this results in a gradual corruption of the image, where the corrupted tokens are semantically similar to the original tokens, allowing the model to learn a more robust denoising process. By contrast, vanilla masked diffusion replaces the clean token with a mask token, which is uninformative and can lead to a less effective denoising process.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+          <h2 class="title is-3">Cross Paradigm OPD from AR teacher</h2>
+          <img src="./static/images/ardistill.png" alt="Few-step generation examples">
+          <div class="content has-text-justified" style="margin-top: 1rem;">
+            <p>
+              NL-Diffusion-Uni learns from an autoregressive teacher model through a cross-paradigm on-policy distillation (OPD) framework. Specifically, NLDUni is variable block-size diffusion model, whose block-size-one view is effectively an autoregressive model. During training, the AR view of NLDUni is distilled from the AR teacher model, while we indirectly train the diffusion view with a self-consistency loss that encourages the diffusion view to produce similar outputs as the AR view. This allows NLDUni to inherit the strong visual understanding capabilities of the AR teacher model, while also benefiting from the parallel generation capabilities of the diffusion model.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+          <h2 class="title is-3">Cross Paradigm OPD from Continuous Flow teacher</h2>
+          <img src="./static/images/flow.png" alt="Token editing examples">
+          <div class="content has-text-justified" style="margin-top: 1rem;">
+            <p>
+              NL-Diffusion-Uni learns from an state-of-the-art continuous flow teacher model. While the teacher and student adopts different latent spaces and incompatible generation paradigms, we still enable on-policy learning by using the teacher to refine student's outputs. Specifically, we first generate an image from the student model, then we use the teacher model to refine the generated image. The refined image is then used as the learning target for the student model. We observe that the teacher's refinements are
+closely aligned to the student's output while having better visual fidelity and source image preservation. This makes the refined image a better learning target than pure teacher outputs, which are often misaligned with the student's predictions.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+          <h2 class="title is-3">Performance and Speed Comparison</h2>
+          <img src="./static/images/performance.png" alt="Speed comparison animation">
+          <div class="content has-text-justified" style="margin-top: 1rem;">
+            <p>
+               NLDUni achieves highly competitive visual understanding and generation performance. Visual understanding performance is averaged across 11 tasks (refer to paper for details). Text-to-image and image editing reports GenEval and ImgEdit Score. Multimodal reasoning is measured on MathVista. Axes are normalized by the best model's performance on each task.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+      <pre><code>@article{li2026nemotron,
+  title   = {Nemotron-Labs-Diffusion-Image: Advancing Masked Discrete Diffusion
+             for High-Resolution Image Synthesis},
+  author  = {Li, Shufan and Heinrich, Greg and Ye, Hanrong and Fu, Yonggan and
+             Grover, Aditya and Kautz, Jan and Molchanov, Pavlo},
+  journal = {arXiv preprint arXiv:2606.29814},
+  year    = {2026}
+}</code></pre>
+    </div>
+  </section>
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+            <p>
+              This website is licensed under a <a rel="license"
+                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+                Commons Attribution-ShareAlike 4.0 International License</a>.
+            </p>
+            <p>
+              This website came from the <a href="https://github.com/nerfies/nerfies.github.io">Nerfies project website
+                template</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>
