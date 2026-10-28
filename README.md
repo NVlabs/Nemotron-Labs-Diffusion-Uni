@@ -2,7 +2,8 @@
 
 ![Teaser](pages/nl-diffusion-uni/static/images/demo.gif)
 
-[Huggingface Checkpoint](https://huggingface.co/nvidia/NLD-Uni)
+[[Paper]](https://arxiv.org/abs/2610.36466)
+[[Huggingface]](https://huggingface.co/nvidia/NLD-Uni)
 
 This is the official complementary codebase of NLD-Uni. It contains gradio demo, SGLang inference, and finetuning script of NLD-Uni. This codebase is not required for running the model. Huggingface checkpoint is standalone release and can be directly loaded and used in `transformers` library without cloning this Git repo.
 
@@ -45,3 +46,17 @@ Open `http://127.0.0.1:7860`. Use `--host`, `--port`, or `--device` as needed.
 ## License
 
 This codebase and its artifacts are governed by [NVIDIA LICENSE](LICENSE)
+
+## Reference
+
+```
+@misc{li2026nemotronlabsdiffusionunielasticselfrefiningunified,
+      title={Nemotron-Labs-Diffusion-Uni: Elastic Self-Refining Unified Diffusion LLM with Cross-Paradigm On-Policy Distillation}, 
+      author={Shufan Li and Hanrong Ye and Greg Heinrich and Yonggan Fu and Haotian Zhang and Sifei Liu and Aditya Grover and Pavlo Molchanov},
+      year={2026},
+      eprint={2610.36466},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2610.36466}, 
+}
+```
